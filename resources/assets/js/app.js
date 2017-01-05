@@ -13,8 +13,10 @@ require('./bootstrap');
  * the application, or feel free to tweak this setup for your needs.
  */
 
-Vue.component('example', require('./components/Example.vue'));
+import Grid from './components/Grid.vue';
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+
+    components: { Grid }
 });
