@@ -30,4 +30,9 @@ class GridController extends Controller
             'rows' => $rows
         ]);
     }
+
+    public function findPath()
+    {
+        // TODO: Implement
+    }
 }
