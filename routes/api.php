@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -17,4 +15,7 @@ use Illuminate\Http\Request;
 //     return $request->user();
 // })->middleware('auth:api');
 
-Route::get('/grid/{height}/{width}', 'GridController@generate');
+Route::get('/grid/{height}/{width}/random', 'GridController@random');
+Route::get('/grid/{height}/{width}/roads', 'GridController@roads');
+
+Route::post('/path/find', 'PathController@find');
