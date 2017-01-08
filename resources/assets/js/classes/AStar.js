@@ -38,33 +38,33 @@ export default class AStar {
             closedList.push(activeNode);
 
             // Calculate the scores of all the neighbors and add them to the open list
-            for (let x = activeNode.x-1; x < activeNode.x+2; x++) {
+            for (let row = activeNode.y-1; row < activeNode.y+2; row++) {
 
                 // If the position exceeds the bounds, skip it
-                if (x < 0 || !rows[x]) continue;
+                if (row < 0 || !rows[row]) continue;
 
-                for (let y = activeNode.y-1; y < activeNode.y+2; y++) {
+                for (let col = activeNode.x-1; col < activeNode.x+2; col++) {
 
                     // If the position is diagonal from the active node, skip it
-                    if (x != activeNode.x && y != activeNode.y) continue;
+                    if (col != activeNode.x && row != activeNode.y) continue;
 
                     // If the position exceeds the bounds, skip it
-                    if (y < 0 || !rows[x][y]) continue;
+                    if (col < 0 || !rows[row][col]) continue;
 
                     // If the position is blocked, skip it
-                    if (rows[x][y].type == 'blocked') continue;
+                    if (rows[row][col].type == 'blocked') continue;
 
                     // If the position is the same as the active node, skip it
-                    if (x == activeNode.x && y == activeNode.y) continue;
+                    if (col == activeNode.x && row == activeNode.y) continue;
 
                     // If the position already exists in the open list, skip it
-                    if (openList.findIndex((node) => { return node.x == x && node.y == y; }) >= 0) continue;
+                    if (openList.findIndex((node) => { return node.x == col && node.y == row; }) >= 0) continue;
 
                     // If the position already exists in the open list, skip it
-                    if (closedList.findIndex((node) => { return node.x == x && node.y == y; }) >= 0) continue;
+                    if (closedList.findIndex((node) => { return node.x == col && node.y == row; }) >= 0) continue;
 
                     // Set the parent of this node to the active node and calculate the scores
-                    let node = Node.create(x, y)
+                    let node = Node.create(col, row)
                         .setParent(activeNode)
                         .calcG()
                         .calcH(end)
