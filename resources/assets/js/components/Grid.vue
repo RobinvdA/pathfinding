@@ -83,9 +83,9 @@
 
 <script>
 
-    import Node from '../classes/Node';
-    import AStar from '../classes/AStar';
-    import Canvas from '../classes/Canvas';
+    import Node from '../classes/Grid/Node';
+    import AStar from '../classes/Grid/AStar';
+    import Canvas from '../classes/Grid/Canvas';
 
     export default {
 

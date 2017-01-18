@@ -14,9 +14,10 @@ require('./bootstrap');
  */
 
 import Grid from './components/Grid.vue';
+import CanvasEngine from './components/CanvasEngine.vue';
 
 const app = new Vue({
     el: '#app',
 
-    components: { Grid }
+    components: { Grid, CanvasEngine }
 });

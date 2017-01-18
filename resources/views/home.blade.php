@@ -12,6 +12,11 @@
 		</div>
 		<div class="row">
 			<div class="col-lg-12">
+				<canvas-engine></canvas-engine>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-12">
 				<grid></grid>
 			</div>
 		</div>
