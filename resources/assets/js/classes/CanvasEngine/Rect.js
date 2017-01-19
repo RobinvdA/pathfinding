@@ -2,7 +2,7 @@ import Shape from './Shape';
 
 export default class Rect extends Shape {
 
-    constructor(x, y, height = 20, width = 20) {
+    constructor(x, y, speed = 1, height = 20, width = 20) {
         this.x = x;
         this.y = y;
         this.height = height;
@@ -11,6 +11,8 @@ export default class Rect extends Shape {
         this.fillColor = '#000';
         this.strokeColor = '#000';
         this.strokeWidth = 1;
+
+        this.speed = speed;
 
         this.ctx = null;
     }

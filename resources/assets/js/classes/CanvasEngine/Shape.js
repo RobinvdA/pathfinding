@@ -6,12 +6,6 @@ export default class Shape {
         this.theta = null;
     }
 
-    canvas(cvs) {
-        this.cvs = cvs;
-
-        return this;
-    }
-
     context(ctx) {
         this.ctx = ctx;
 
@@ -48,8 +42,8 @@ export default class Shape {
             return;
         }
 
-        this.x += Math.cos(this.theta);
-        this.y += Math.sin(this.theta);
+        this.x += Math.cos(this.theta) * this.speed;
+        this.y += Math.sin(this.theta) * this.speed;
     }
 
     render() {

@@ -10,10 +10,6 @@ export default class Canvas {
 
         this.shapes = [];
 
-        this._onClick = () => {};
-
-        this.canvas.addEventListener('click', this._clicked.bind(this), false);
-
         this.continue = true;
 
         this._loop();
@@ -24,25 +20,18 @@ export default class Canvas {
     }
 
     addShape(shape) {
-        this.shapes.push(shape.context(this.ctx).canvas(this));
-    }
-
-    _clicked(e) {
-        let x = Math.floor((e.clientX - this.canvas.getBoundingClientRect().left) / this.nodeSize);
-        let y = Math.floor((e.clientY - this.canvas.getBoundingClientRect().top) / this.nodeSize);
-
-        this._onClick(x, y);
+        this.shapes.push(shape.context(this.ctx));
     }
 
     _loop() {
-        this._draw();
+        this._render();
 
         setTimeout(() => {
             if (this.continue) this._loop();
         }, 16);
     }
 
-    _draw() {
+    _render() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
         this.shapes.forEach((shape) => {
