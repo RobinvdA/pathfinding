@@ -4,22 +4,14 @@
 
 @section('content')
 
-	<div id="app">
-		<div class="row">
-			<div class="col-lg-12">
-				
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-lg-12">
-				<canvas-engine></canvas-engine>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-lg-12">
-				<grid></grid>
-			</div>
-		</div>
-	</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <grid v-if="activePage == 'Grid'"></grid>
+                <canvas-engine v-if="activePage == 'CanvasEngine'"></canvas-engine>
+                <canvas-signature v-if="activePage == 'CanvasSignature'"></canvas-signature>
+            </div>
+        </div>
+    </div>
 
 @endsection

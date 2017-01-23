@@ -5,10 +5,12 @@
 
         <div class="panel-body">
 
-            <button class="btn btn-default" @click="addRect">Create</button>
-            <button class="btn btn-default" @click="moveRect">Move</button>
-            <button class="btn btn-default" @click="stop">Stop</button>
-            <button class="btn btn-default" @click="clear">Clear</button>
+            <div class="form-group">
+                <button class="btn btn-primary" @click="addRect">Create</button>
+                <button class="btn btn-primary" @click="moveRect">Move</button>
+                <button class="btn btn-primary" @click="stop">Stop</button>
+                <button class="btn btn-primary" @click="clear">Clear</button>
+            </div>
 
             <canvas id="canvas-engine" width="1100" height="1100"></canvas>
 
