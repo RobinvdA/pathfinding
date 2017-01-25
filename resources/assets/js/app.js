@@ -15,16 +15,29 @@ require('./bootstrap');
 
 import NavHeader from './components/NavHeader.vue';
 
+window.EventBus = new Vue({});
+
+import Home from './components/Home.vue';
 import Grid from './components/Grid.vue';
 import CanvasEngine from './components/CanvasEngine.vue';
 import CanvasSignature from './components/CanvasSignature.vue';
 
+import VueRouter from 'vue-router';
+Vue.use(VueRouter);
+
+const routes = [
+    { path: '/', component: Home },
+    { path: '/Grid', component: Grid },
+    { path: '/CanvasEngine', component: CanvasEngine },
+    { path: '/CanvasSignature', component: CanvasSignature }
+];
+
+const router = new VueRouter({ routes });
+
 const app = new Vue({
+    router,
+
     el: '#app',
 
-    data: {
-        activePage: 'Grid'
-    },
-
-    components: { NavHeader, Grid, CanvasEngine, CanvasSignature }
+    components: { NavHeader }
 });

@@ -13,9 +13,9 @@
             </div>
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li :class="{ 'active': activePage == 'Grid' }"><a href="#" @click.prevent="page('Grid')">Grid</a></li>
-                    <li :class="{ 'active': activePage == 'CanvasEngine' }"><a href="#" @click.prevent="page('CanvasEngine')">CanvasEngine</a></li>
-                    <li :class="{ 'active': activePage == 'CanvasSignature' }"><a href="#" @click.prevent="page('CanvasSignature')">CanvasSignature</a></li>
+                    <li><router-link to="/Grid">Grid</router-link></li>
+                    <li><router-link to="/CanvasEngine">CanvasEngine</router-link></li>
+                    <li><router-link to="/CanvasSignature">CanvasSignature</router-link></li>
                 </ul>
             </div>
         </div>
@@ -25,20 +25,15 @@
 
 <style>
 
+    .router-link-active {
+        background-color: #080808 !important;
+        color: #fff !important;
+    }
+
 </style>
 
 <script>
 
-    export default {
-
-        props: ['activePage'],
-
-        methods: {
-            page(name) {
-                this.activePage = name;
-            }
-        },
-
-    }
+    export default { }
 
 </script>

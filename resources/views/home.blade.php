@@ -7,9 +7,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <grid v-if="activePage == 'Grid'"></grid>
-                <canvas-engine v-if="activePage == 'CanvasEngine'"></canvas-engine>
-                <canvas-signature v-if="activePage == 'CanvasSignature'"></canvas-signature>
+                <router-view></router-view>
             </div>
         </div>
     </div>
