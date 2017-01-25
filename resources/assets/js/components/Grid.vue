@@ -4,7 +4,6 @@
         <div class="panel-heading">Grid</div>
 
         <div class="panel-body">
-            <div style="margin-bottom: 14px">
                 <div class="form-group">
                     <label for="height">Height</label>
                     <input id="height" type="text" class="form-control" placeholder="Hoogte" v-model="height" />
@@ -14,13 +13,14 @@
                     <input id="width" type="text" class="form-control" placeholder="Breedte" v-model="width" />
                 </div>
 
-                <button class="btn btn-primary" @click="generateRandom">Generate random grid</button>
-                <button class="btn btn-primary" @click="generateRoads">Generate road grid</button>
-                <button class="btn btn-primary" @click="findPathPHP">Find path (PHP)</button>
-                <button class="btn btn-primary" @click="findPathJS">Find path (JS)</button>
+                <div class="form-group">
+                    <button class="btn btn-primary" @click="generateRandom">Generate random grid</button>
+                    <button class="btn btn-primary" @click="generateRoads">Generate road grid</button>
+                    <button class="btn btn-primary" @click="findPathPHP">Find path (PHP)</button>
+                    <button class="btn btn-primary" @click="findPathJS">Find path (JS)</button>
 
-                <span v-if="steps">Path found in {{ steps }} steps!</span>
-            </div>
+                    <span v-if="steps">Path found in {{ steps }} steps!</span>
+                </div>
 
             <canvas id="canvas" width="1100" height="1100"></canvas>
 
@@ -83,9 +83,9 @@
 
 <script>
 
-    import Node from '../classes/Node';
-    import AStar from '../classes/AStar';
-    import Canvas from '../classes/Canvas';
+    import Node from '../classes/Grid/Node';
+    import AStar from '../classes/Grid/AStar';
+    import Canvas from '../classes/Grid/Canvas';
 
     export default {
 

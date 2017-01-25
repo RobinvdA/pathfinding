@@ -13,10 +13,18 @@ require('./bootstrap');
  * the application, or feel free to tweak this setup for your needs.
  */
 
+import NavHeader from './components/NavHeader.vue';
+
 import Grid from './components/Grid.vue';
+import CanvasEngine from './components/CanvasEngine.vue';
+import CanvasSignature from './components/CanvasSignature.vue';
 
 const app = new Vue({
     el: '#app',
 
-    components: { Grid }
+    data: {
+        activePage: 'Grid'
+    },
+
+    components: { NavHeader, Grid, CanvasEngine, CanvasSignature }
 });
