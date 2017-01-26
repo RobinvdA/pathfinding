@@ -13,9 +13,9 @@ require('./bootstrap');
  * the application, or feel free to tweak this setup for your needs.
  */
 
-import NavHeader from './components/NavHeader.vue';
-
 window.EventBus = new Vue({});
+
+import NavHeader from './components/NavHeader.vue';
 
 import Home from './components/Home.vue';
 import Grid from './components/Grid.vue';
@@ -26,16 +26,14 @@ import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 
 const routes = [
-    { path: '/', component: Home },
-    { path: '/Grid', component: Grid },
-    { path: '/CanvasEngine', component: CanvasEngine },
+    { path: '/',                component: Home },
+    { path: '/Grid',            component: Grid },
+    { path: '/CanvasEngine',    component: CanvasEngine },
     { path: '/CanvasSignature', component: CanvasSignature }
 ];
 
-const router = new VueRouter({ routes });
-
 const app = new Vue({
-    router,
+    router: new VueRouter({ routes }),
 
     el: '#app',
 

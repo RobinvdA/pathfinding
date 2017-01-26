@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\AStar;
 use App\Node;
+use App\AStar;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 

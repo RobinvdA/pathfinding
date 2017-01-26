@@ -8,7 +8,7 @@
 
         <div id="app">
 
-            <nav-header :active-page="activePage"></nav-header>
+            <nav-header></nav-header>
 
             @yield('content')
 

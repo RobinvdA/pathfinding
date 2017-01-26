@@ -1,5 +1,3 @@
-import Rect from './Rect';
-
 export default class Canvas {
 
     constructor(canvas) {
