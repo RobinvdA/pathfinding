@@ -29,6 +29,15 @@ export default class Rect extends Shape {
         return this;
     }
 
+    bounds() {
+        return {
+            topLeft: { x: this.x - this.radius, y: this.y - this.radius },
+            topRight: { x: this.x + this.radius, y: this.y - this.radius },
+            bottomLeft: { x: this.x - this.radius, y: this.y + this.radius },
+            bottomRight: { x: this.x + this.radius, y: this.y + this.radius },
+        };
+    }
+
     render() {
         this.ctx.beginPath();
         this.ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI, false);

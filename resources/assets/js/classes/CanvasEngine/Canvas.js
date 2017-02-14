@@ -32,9 +32,35 @@ export default class Canvas {
     _render() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
-        this.shapes.forEach((shape) => {
+        let stopMoving = false;
+        let s = [];
+        let oldX = 0;
+        let oldY = 0;
 
-            if (shape.theta != null) shape.move();
+        this.shapes.forEach((shape, index) => {
+
+            if (shape.theta != null) {
+                oldX = shape.x;
+                oldY = shape.y;
+
+                shape.move();
+
+                if (shape.collisions) {
+                    s = _.filter(this.shapes, (s, i) => {
+                        return index != i && shape.collidesWith(s);
+                    });
+
+                    if (s.length > 0) {
+                        stopMoving = false;
+
+                        _.each(s, (x) => {
+                            stopMoving = !shape.collisionDetected(x);
+                        });
+
+                        if (stopMoving) shape.moveTo(oldX, oldY);
+                    }
+                }
+            }
 
             shape.render();
 

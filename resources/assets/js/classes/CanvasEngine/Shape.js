@@ -4,12 +4,20 @@ export default class Shape {
         this.movingToX = 0;
         this.movingToY = 0;
         this.theta = null;
+
+        this.collisions = false;
+
+        this.collisionDetected = () => {};
     }
 
     context(ctx) {
         this.ctx = ctx;
 
         return this;
+    }
+
+    onCollision(func) {
+        this.collisionDetected = func;
     }
 
     moveTo(x, y) {
@@ -27,11 +35,11 @@ export default class Shape {
     move() {
         if (
             (
-                this.x - this.movingToX >= -1 &&
-                this.x - this.movingToX <= 1
+                this.x - this.movingToX >= -this.speed &&
+                this.x - this.movingToX <= this.speed
             ) && (
-                this.y - this.movingToY >= -1 &&
-                this.y - this.movingToY <= 1
+                this.y - this.movingToY >= -this.speed &&
+                this.y - this.movingToY <= this.speed
             )
         ) {
             this.x = this.movingToX;
@@ -46,7 +54,18 @@ export default class Shape {
         this.y += Math.sin(this.theta) * this.speed;
     }
 
+    collidesWith(shape) {
+        let v = this.bounds().topLeft.x < shape.bounds().topRight.x && this.bounds().topRight.x > shape.bounds().topLeft.x;
+        let h = this.bounds().topLeft.y < shape.bounds().bottomLeft.y && this.bounds().bottomLeft.y > shape.bounds().topLeft.y;
+
+        return v && h;
+    }
+
+    bounds() {
+        console.log('This shape has not yet implemented `bounds`');
+    }
+
     render() {
-        console.log('This shape has not yet implemented `draw`');
+        console.log('This shape has not yet implemented `render`');
     }
 }

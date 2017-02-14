@@ -30,6 +30,15 @@ export default class Rect extends Shape {
         return this;
     }
 
+    bounds() {
+        return {
+            topLeft: { x: this.x, y: this.y },
+            topRight: { x: this.x + this.width, y: this.y },
+            bottomLeft: { x: this.x, y: this.y + this.height },
+            bottomRight: { x: this.x + this.width, y: this.y + this.height },
+        };
+    }
+
     render() {
         this.ctx.beginPath();
         this.ctx.rect(this.x, this.y, this.height, this.width);

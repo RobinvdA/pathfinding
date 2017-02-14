@@ -21,6 +21,7 @@ import Home from './components/Home.vue';
 import Grid from './components/Grid.vue';
 import CanvasEngine from './components/CanvasEngine.vue';
 import CanvasSignature from './components/CanvasSignature.vue';
+import Movement from './components/Movement.vue';
 
 import VueRouter from 'vue-router';
 Vue.use(VueRouter);
@@ -29,7 +30,8 @@ const routes = [
     { path: '/',                component: Home },
     { path: '/Grid',            component: Grid },
     { path: '/CanvasEngine',    component: CanvasEngine },
-    { path: '/CanvasSignature', component: CanvasSignature }
+    { path: '/CanvasSignature', component: CanvasSignature },
+    { path: '/Movement',        component: Movement }
 ];
 
 const app = new Vue({
