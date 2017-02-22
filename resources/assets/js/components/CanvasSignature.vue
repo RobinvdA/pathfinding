@@ -31,7 +31,6 @@
 </style>
 
 <script>
-
     export default {
 
         data() {
@@ -85,5 +84,4 @@
         }
 
     }
-
 </script>

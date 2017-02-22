@@ -82,21 +82,11 @@
 </style>
 
 <script>
-
     import Node from '../classes/Grid/Node';
     import AStar from '../classes/Grid/AStar';
     import Canvas from '../classes/Grid/Canvas';
 
     export default {
-
-        watch: {
-//            path() {
-//                this.steps = this.path.length;
-//
-//                this.animationStep = 0;
-//                this.drawPath();
-//            }
-        },
 
         data() {
             return {

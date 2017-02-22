@@ -10,7 +10,7 @@
                 <span>Score: {{ score }}</span>
             </div>
 
-            <canvas id="movement-canvas" width="400" height="400" @click="move"></canvas>
+            <canvas id="movement-canvas" :width="width" :height="height" @click="move"></canvas>
 
         </div>
     </div>
@@ -26,9 +26,9 @@
 </style>
 
 <script>
-    import Rectangle from '../classes/CanvasEngine/Rectangle';
     import Circle from '../classes/CanvasEngine/Circle';
     import Canvas from '../classes/CanvasEngine/Canvas';
+    import Rectangle from '../classes/CanvasEngine/Rectangle';
 
     export default {
 
@@ -36,12 +36,41 @@
             return {
                 score: 0,
 
-                user: {}
+                user: {},
+
+                width: 400,
+                height: 400
             }
         },
 
         mounted() {
             this.reset();
+
+            document.addEventListener('keydown', (event) => {
+                if (!this.user) return;
+
+                switch (event.keyCode) {
+                    case 87: // Up
+                        this.user.moveUp();
+                        break;
+                    case 83: // Down
+                        this.user.moveDown();
+                        break;
+                    case 65: // Left
+                        this.user.moveLeft();
+                        break;
+                    case 68: // Right
+                        this.user.moveRight();
+                        break;
+                }
+            }, false);
+
+            document.addEventListener('keyup', (event) => {
+                if (!this.user) return;
+
+                // Stop movement
+                this.user.stopMoving();
+            }, false);
         },
 
         methods: {

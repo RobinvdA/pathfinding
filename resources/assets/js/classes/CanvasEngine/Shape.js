@@ -20,12 +20,18 @@ export default class Shape {
         this.collisionDetected = func;
     }
 
-    moveTo(x, y) {
-        this.movingToX = x;
-        this.movingToY = y;
+    moveUp() { this.theta = Math.atan2(-1, 0); }
+    moveDown() { this.theta = Math.atan2(1, 0); }
+    moveLeft() { this.theta = Math.atan2(0, -1); }
+    moveRight() { this.theta = Math.atan2(0, 1); }
+    stopMoving() { this.theta = null; }
 
-        let diffX = x - this.x;
-        let diffY = y - this.y;
+    moveTo(x, y) {
+        this.movingToX = x != null ? x : this.movingToX ? this.movingToX : this.x;
+        this.movingToY = y != null ? y : this.movingToY ? this.movingToY : this.y;
+
+        let diffX = this.movingToX - this.x;
+        let diffY = this.movingToY - this.y;
 
         this.theta = Math.atan2(diffY, diffX);
 
