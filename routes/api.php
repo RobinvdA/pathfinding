@@ -19,3 +19,5 @@ Route::get('/grid/{height}/{width}/random', 'GridController@random');
 Route::get('/grid/{height}/{width}/roads', 'GridController@roads');
 
 Route::post('/path/find', 'PathController@find');
+
+Route::post('/image', 'ImageController@save');

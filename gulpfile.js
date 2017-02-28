@@ -15,5 +15,6 @@ require('laravel-elixir-vue-2');
 
 elixir(mix => {
     mix.less('app.less')
-       .webpack('app.js');
+        .webpack('app.js')
+        .copy('resources\\assets\\img\\', 'public\\img\\');
 });

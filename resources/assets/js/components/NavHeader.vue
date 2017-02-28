@@ -17,6 +17,7 @@
                     <li><router-link to="/CanvasEngine">CanvasEngine</router-link></li>
                     <li><router-link to="/CanvasSignature">CanvasSignature</router-link></li>
                     <li><router-link to="/Movement">Movement</router-link></li>
+                    <li><router-link to="/CanvasDrawing">CanvasDrawing</router-link></li>
                 </ul>
             </div>
         </div>

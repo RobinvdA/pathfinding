@@ -13,6 +13,8 @@ require('./bootstrap');
  * the application, or feel free to tweak this setup for your needs.
  */
 
+window.Hammer = require('hammerjs');
+
 window.EventBus = new Vue({});
 
 import NavHeader from './components/NavHeader.vue';
@@ -22,6 +24,7 @@ import Grid from './components/Grid.vue';
 import CanvasEngine from './components/CanvasEngine.vue';
 import CanvasSignature from './components/CanvasSignature.vue';
 import Movement from './components/Movement.vue';
+import CanvasDrawing from './components/CanvasDrawing.vue';
 
 import VueRouter from 'vue-router';
 Vue.use(VueRouter);
@@ -31,7 +34,8 @@ const routes = [
     { path: '/Grid',            component: Grid },
     { path: '/CanvasEngine',    component: CanvasEngine },
     { path: '/CanvasSignature', component: CanvasSignature },
-    { path: '/Movement',        component: Movement }
+    { path: '/Movement',        component: Movement },
+    { path: '/CanvasDrawing',   component: CanvasDrawing }
 ];
 
 const app = new Vue({

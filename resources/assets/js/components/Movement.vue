@@ -26,8 +26,8 @@
 </style>
 
 <script>
-    import Circle from '../classes/CanvasEngine/Circle';
     import Canvas from '../classes/CanvasEngine/Canvas';
+    import Circle from '../classes/CanvasEngine/Circle';
     import Rectangle from '../classes/CanvasEngine/Rectangle';
 
     export default {
