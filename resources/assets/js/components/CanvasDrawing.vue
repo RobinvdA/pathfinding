@@ -29,7 +29,7 @@
 <style>
     .size-preview {
         border-radius: 50%;
-        border-color: #000;
+        border: 1px solid #000;
         display: inline-block;
     }
 
