@@ -34,7 +34,8 @@
     }
 
     canvas#canvas-drawing {
-        background: url('../../img/google.png') no-repeat;
+        background: rgba(0, 0, 0, 0) url('../../img/google.png') no-repeat scroll 0 0 / 1100px auto;
+        cursor: crosshair;
     }
 </style>
 
@@ -52,11 +53,19 @@
                 pencilColor: '#000',
                 pencilWidth: 1,
 
-                eraserWidth: 10,
+                eraserWidth: 10
+            }
+        },
 
-                line: null,
-
-                history: []
+        watch: {
+            pencilColor() {
+                this.canvas.setDrawingColor(this.pencilColor);
+            },
+            pencilWidth() {
+                this.canvas.setDrawingWidth(this.pencilWidth);
+            },
+            eraserWidth() {
+                this.canvas.setEraserWidth(this.eraserWidth);
             }
         },
 
@@ -69,39 +78,9 @@
                 let canvasElement = document.getElementById('canvas-drawing');
 
                 this.canvas = new Canvas(canvasElement);
-
-                let hammer = new Hammer(canvasElement);
-                hammer.get('pan').set({ direction: Hammer.DIRECTION_ALL });
-
-                this.line = null;
-
-                hammer.on('panstart', (e) => {
-                    this.canvasPos = canvasElement.getBoundingClientRect();
-
-                    this.line = new Line();
-
-                    this.line.setStart(Math.round(e.center.x - this.canvasPos.left), Math.round(e.center.y - this.canvasPos.top));
-                    this.line.setColor(this.pencilColor);
-                    this.line.setWidth(this.pencilColor != 'eraser' ? this.pencilWidth : this.eraserWidth);
-                });
-
-                hammer.on('pan', (e) => {
-                    let newX = Math.round(e.center.x - this.canvasPos.left);
-                    let newY = Math.round(e.center.y - this.canvasPos.top);
-
-                    this.line.setEnd(newX, newY);
-
-                    this.canvas.drawLine(this.line);
-
-                    this.line.setStart(newX, newY);
-                });
-
-                hammer.on('panend', (e) => {
-                    this.canvasPos = null;
-                    this.line = null;
-
-                    this.history.push(this.canvas.getPNG());
-                });
+                this.canvas.setDrawingColor(this.pencilColor)
+                    .setDrawingWidth(this.pencilWidth)
+                    .setEraserWidth(this.eraserWidth);
             },
 
             increaseWidth() {
@@ -121,32 +100,16 @@
             },
 
             undo() {
-                if (this.history.length <= 1) return;
-
-                this.canvas.clear();
-
-                let imageObj = new Image();
-                imageObj.onload = () => {
-                    this.canvas.drawImage(imageObj);
-                };
-                imageObj.src = this.history[this.history.length-2];
-
-                // TODO: Finish this function
+                this.canvas.undo();
             },
 
             save() {
-                let imageObj = new Image();
-
-                imageObj.onload = () => {
-                    this.canvas.drawImage(imageObj);
-
+                this.canvas.drawBackground('../img/google.png', () => {
                     this.$http.post(`/api/image`, { image: this.canvas.getPNG() })
                         .then((response) => {
                             console.log(response);
                         });
-                };
-
-                imageObj.src = '../img/google.png';
+                });
             }
         }
     }
